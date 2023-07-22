@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\DummyModel;
+use App\Models\DummyModel;
 use Pkkbkraa\LaravelLivewireForms\ArrayField;
 use Pkkbkraa\LaravelLivewireForms\Field;
 use Pkkbkraa\LaravelLivewireForms\FormComponent;
