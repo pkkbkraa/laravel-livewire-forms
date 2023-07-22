@@ -359,6 +359,9 @@ Field::make('Color')->select(['紅色' => '#ff0000', '綠色' => '#00ff00', '藍
 
 使用關聯陣列時，鍵將用於選項標籤，值用於選項值。
 
+### `multipleSelect($options = [])`
+將字段設置為 `select` 下拉元素，並設置成多選，用法與 `select` 相同。
+
 ### `checkbox()`
 
 將字段設置為 `checkbox` 元素。
@@ -378,6 +381,10 @@ Field::make('accepts_terms')->checkbox()->placeholder('您是否接受我們的�
 ```
 
 如果指定了 `placeholder()`，則將用作勾選框的標籤。
+
+### `switch()`
+
+將字段設置為 `checkbox` 元素，但以 `switch buttom` 呈現。
 
 ### `checkboxes($options = [])`
 
