@@ -234,9 +234,7 @@ public function fields()
     $brand_options = Brand::orderBy('name')->get()->pluck('id', 'name')->all();
 
     return [
-        Field::make('Brand', 'brand_id')->select($brand_options)->help('請選
-
-擇一個品牌。'),
+        Field::make('Brand', 'brand_id')->select($brand_options)->help('請選擇一個品牌。'),
         Field::make('Name')->input()->rules(['required', Rule::unique('cars', 'name')->ignore($this->model->id)]),
         Field::make('Photos')->file()->multiple()->rules('required'),
         Field::make('Color')->select(['Red', 'Green', 'Blue']),
@@ -291,7 +289,7 @@ return [
 示例：
 
 ```php
-Field::make('電子郵件地址')->input('email'),
+Field::make('email')->input('email'),
 ```
 
 ### `file()`
@@ -316,13 +314,13 @@ protected $casts = ['photos' => 'array'];
 示例字段聲明：
 
 ```php
-Field::make('照片')->file(),
+Field::make('photos')->file(),
 ```
 
 您可以使用 `multiple()` 方法允許多個文件選擇：
 
 ```php
-Field::make('照片')->file()->multiple(),
+Field::make('photos')->file()->multiple(),
 ```
 
 ### `textarea($rows = 2)`
@@ -336,7 +334,7 @@ Field::make('照片')->file()->multiple(),
 示例：
 
 ```php
-Field::make('描述')->textarea(5),
+Field::make('description')->textarea(5),
 ```
 
 ### `select($options = [])`
@@ -350,13 +348,13 @@ Field::make('描述')->textarea(5),
 示例使用連續陣列：
 
 ```php
-Field::make('顏色')->select(['紅色', '綠色', '藍色']),
+Field::make('Color')->select(['紅色', '綠色', '藍色']),
 ```
 
 示例使用關聯陣列：
 
 ```php
-Field::make('顏色')->select(['紅色' => '#ff0000', '綠色' => '#00ff00', '藍色' => '#0000ff']),
+Field::make('Color')->select(['紅色' => '#ff0000', '綠色' => '#00ff00', '藍色' => '#0000ff']),
 ```
 
 使用關聯陣列時，鍵將用於選項標籤，值用於選項值。
@@ -376,7 +374,7 @@ $table->boolean('accepts_terms')->nullable();
 示例字段聲明：
 
 ```php
-Field::make('接受條款')->checkbox()->placeholder('您是否接受我們的服務條款？')->rules('accepted'),
+Field::make('accepts_terms')->checkbox()->placeholder('您是否接受我們的服務條款？')->rules('accepted'),
 ```
 
 如果指定了 `placeholder()`，則將用作勾選框的標籤。
@@ -406,7 +404,7 @@ protected $casts = ['features' => 'array'];
 示例字段聲明：
 
 ```php
-Field::make('功能')->checkboxes(['音響', '藍牙', '導航'])->rules('required|min:2'),
+Field::make('features')->checkboxes(['音響', '藍牙', '導航'])->rules('required|min:2'),
 ```
 
 ### `radio($options = [])`
@@ -420,7 +418,7 @@ Field::make('功能')->checkboxes(['音響', '藍牙', '導航'])->rules('requir
 示例：
 
 ```php
-Field::make('燃料類型')->radio(['汽油', '柴油', '電動'])->default('柴油'),
+Field::make('燃料類型', 'fuel_type')->radio(['汽油', '柴油', '電動'])->default('柴油'),
 ```
 
 ### `array($fields = [])`
@@ -436,18 +434,18 @@ Field::make('燃料類型')->radio(['汽油', '柴油', '電動'])->default('柴
 ```php
 
 
-Field::make('所有者')->array([
-    ArrayField::make('全名')->input()->placeholder('全名')->rules('required'),
-    ArrayField::make('電話號碼')->input('tel')->placeholder('電話號碼'),
+Field::make('Owner')->array([
+    ArrayField::make('full_name')->input()->placeholder('全名')->rules('required'),
+    ArrayField::make('phone_number')->input('tel')->placeholder('電話號碼'),
 ])->rules('required'),
 ```
 
 使用 `sortable()` 方法使數組字段可排序：
 
 ```php
-Field::make('所有者')->array([
-    ArrayField::make('全名')->input()->placeholder('全名')->rules('required'),
-    ArrayField::make('電話號碼')->input('tel')->placeholder('電話號碼'),
+Field::make('Owner')->array([
+    ArrayField::make('full_name')->input()->placeholder('全名')->rules('required'),
+    ArrayField::make('phone_number')->input('tel')->placeholder('電話號碼'),
 ])->sortable(),
 ```
 
@@ -462,7 +460,7 @@ Field::make('所有者')->array([
 示例：
 
 ```php
-Field::make('城市')->input()->default('多倫多'),
+Field::make('City')->input()->default('台北'),
 ```
 
 ### `autocomplete($autocomplete)`
@@ -476,7 +474,7 @@ Field::make('城市')->input()->default('多倫多'),
 示例：
 
 ```php
-Field::make('密碼')->input('password')->autocomplete('new-password'),
+Field::make('密碼', 'password')->input('password')->autocomplete('new-password'),
 ```
 
 ### `placeholder($placeholder)`
@@ -490,7 +488,7 @@ Field::make('密碼')->input('password')->autocomplete('new-password'),
 示例：
 
 ```php
-Field::make('國家')->input()->placeholder('您所在的國家是？'),
+Field::make('國家', 'country')->input()->placeholder('您所在的國家是？'),
 ```
 
 ### `help($help)`
@@ -504,7 +502,7 @@ Field::make('國家')->input()->placeholder('您所在的國家是？'),
 示例：
 
 ```php
-Field::make('城市')->input()->help('請輸入您目前所在的城市。'),
+Field::make('城市', 'city')->input()->help('請輸入您目前所在的城市。'),
 ```
 
 ### `rules($rules)`
@@ -518,13 +516,13 @@ Field::make('城市')->input()->help('請輸入您目前所在的城市。'),
 示例使用字符串：
 
 ```php
-Field::make('名字')->input()->rules('required|min:2'),
+Field::make('name')->input()->rules('required|min:2'),
 ```
 
 示例使用陣列：
 
 ```php
-Field::make('城市')->input()->rules(['required', Rule::in(['多倫多', '紐約']), new MyCustomRule]),
+Field::make('city')->input()->rules(['required', Rule::in(['台北', '高雄']), new MyCustomRule]),
 ```
 
 ### `view($view)`
@@ -561,7 +559,7 @@ Field::make('城市')->input()->rules(['required', Rule::in(['多倫多', '紐�
 示例自定義視圖字段聲明：
 
 ```php
-Field::make('自訂欄位')->view('fields.custom-field');
+Field::make('custom')->view('fields.custom-field');
 ```
 
 # 數組字段聲明
