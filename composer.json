@@ -1,6 +1,7 @@
 {
     "name": "pkkbkraa/laravel-livewire-forms",
     "description": "A dynamic, responsive Laravel Livewire form component with realtime validation, file uploads, array fields, and more.",
+    "homepage": "https://github.com/pkkbkraa/laravel-livewire-forms",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -21,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Pkkbkraa\\LaravelLivewireForms\\Providers\\FormServiceProvider"
+                "Kdion4891\\LaravelLivewireForms\\Providers\\FormServiceProvider"
             ]
         }
     }
