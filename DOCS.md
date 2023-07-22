@@ -203,11 +203,13 @@ The `Field` class is used to declare your form fields.
             Field::make('Name')->input()->rules(['required', Rule::unique('cars', 'name')->ignore($this->model->id)]),
             Field::make('Photos')->file()->multiple()->rules('required'),
             Field::make('Color')->select(['Red', 'Green', 'Blue']),
+            Field::make('Colors')->multipleSelect(['Red', 'Green', 'Blue']),
             Field::make('Owners')->array([
                 ArrayField::make('Name')->input()->placeholder('Name')->rules('required'),
                 ArrayField::make('Phone')->input('tel')->placeholder('Phone')->rules('required'),
             ])->rules('required'),
             Field::make('Insurable')->checkbox()->placeholder('Is the car insurable?')->rules('accepted'),
+            Field::make('Insurable')->switch()->placeholder('Is the car insurable?')->rules('accepted'),
             Field::make('Fuel Type')->radio(['Gas', 'Diesel', 'Electric'])->default('Diesel'),
             Field::make('Features')->checkboxes(['Stereo', 'Bluetooth', 'Navigation'])->rules('required|min:2'),
             Field::make('Description')->textarea(),
