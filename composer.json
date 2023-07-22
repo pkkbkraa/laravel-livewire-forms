@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kdion4891\\LaravelLivewireForms\\Providers\\FormServiceProvider"
+                "Pkkbkraa\\LaravelLivewireForms\\Providers\\FormServiceProvider"
             ]
         }
     }

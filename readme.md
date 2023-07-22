@@ -10,8 +10,8 @@ Please check out my latest package here: https://github.com/bastinald/laravel-li
 
 A dynamic, responsive [Laravel Livewire](https://laravel-livewire.com) form component with realtime validation, file uploads, array fields, and more.
 
-- [Support](https://github.com/kdion4891/laravel-livewire-forms/issues)
-- [Contributions](https://github.com/kdion4891/laravel-livewire-forms/pulls)
+- [Support](https://github.com/Pkkbkraa/laravel-livewire-forms/issues)
+- [Contributions](https://github.com/Pkkbkraa/laravel-livewire-forms/pulls)
 - [Buy me a coffee](https://paypal.me/kjjdion)
 
 # Installation
@@ -20,7 +20,7 @@ Make sure you've [installed Laravel Livewire](https://laravel-livewire.com/docs/
 
 Installing this package via composer:
 
-    composer require kdion4891/laravel-livewire-forms
+    composer require Pkkbkraa/laravel-livewire-forms
     
 This package was designed to work well with [Laravel frontend scaffolding](https://laravel.com/docs/master/frontend).
 
