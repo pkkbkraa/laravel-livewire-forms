@@ -1,6 +1,6 @@
 <div>
-    <div class="card">
-        <div class="card-body">
+    <div class="{{$type == 'modal' ? '' : 'card'}}">
+        <div class="{{$type == 'modal' ? '' : 'card'}}-body">
             @foreach($fields as $field)
                 @if($field->view)
                     @include($field->view)
@@ -8,12 +8,11 @@
                     @include('laravel-livewire-forms::fields.' . $field->type)
                 @endif
             @endforeach
-
-            <div class="row">
-                <div class="col-md offset-md-2">
-                    <button class="btn btn-primary" wire:click="saveAndStay">{{ __('Save') }}</button>
-                    <button class="btn btn-primary" wire:click="saveAndGoBack">{{ __('Save & Go Back') }}</button>
-                </div>
+        </div>
+        <div class="{{$type == 'modal' ? '' : 'card'}}-footer">
+            <div class="hstack gap-2 justify-content-end">
+                <button type="button" class="btn btn-ghost-danger" data-bs-dismiss="modal" wire:click="closeForm"><i class="ri-close-fill align-bottom"></i> {{ __('Close') }}</button>
+                <button class="btn btn-primary btn-sm" wire:click="saveAndStay">{{ __('Save') }}</button>
             </div>
         </div>
     </div>

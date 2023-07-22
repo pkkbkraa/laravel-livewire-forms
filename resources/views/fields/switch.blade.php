@@ -1,9 +1,9 @@
 <div class="form-group mb-2">
     <label for="{{ $field->name }}" class="form-label">
-        {{ $field->placeholder ? $field->label : '' }} {!! strpos($field->rules, 'required') !== false ? '<font color="red">*</font>' : '' !!}
+        {{ $field->placeholder ? $field->label : '' }} {!! strpos($field->rules, 'accepted') !== false ? '<font color="red">*</font>' : '' !!}
     </label>
 
-    <div class="form-check">
+    <div class="form-check form-switch form-switch-md">
         <input
             id="{{ $field->name }}"
             type="checkbox"

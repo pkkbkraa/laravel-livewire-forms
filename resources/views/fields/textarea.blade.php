@@ -1,16 +1,14 @@
-<div class="form-group row">
-    <label for="{{ $field->name }}" class="col-md-2 col-form-label text-md-right">
-        {{ $field->label }}
+<div class="form-group mb-2">
+    <label for="{{ $field->name }}" class="form-label">
+        {{ $field->label }} {!! strpos($field->rules, 'required') !== false ? '<font color="red">*</font>' : '' !!}
     </label>
 
-    <div class="col-md">
-        <textarea
-            id="{{ $field->name }}"
-            rows="{{ $field->textarea_rows }}"
-            class="form-control @error($field->key) is-invalid @enderror"
-            placeholder="{{ $field->placeholder }}"
-            wire:model.lazy="{{ $field->key }}"></textarea>
+    <textarea
+        id="{{ $field->name }}"
+        rows="{{ $field->textarea_rows }}"
+        class="form-control @error($field->key) is-invalid @enderror"
+        placeholder="{{ $field->placeholder }}"
+        wire:model.lazy="{{ $field->key }}"></textarea>
 
-        @include('laravel-livewire-forms::fields.error-help')
-    </div>
+    @include('laravel-livewire-forms::fields.error-help')
 </div>

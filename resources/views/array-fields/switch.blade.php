@@ -1,5 +1,5 @@
 <div class="col-md{{ $array_field->column_width ? '-' . $array_field->column_width : '' }} mb-2">
-    <div class="form-check">
+    <div class="form-check form-switch form-switch-md">
         <input
             id="{{ $field->key . '.' . $key . '.' . $array_field->name }}"
             type="checkbox"

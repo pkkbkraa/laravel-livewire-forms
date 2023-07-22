@@ -44,9 +44,22 @@ class BaseField
         return $this;
     }
 
+    public function multipleSelect($options = [])
+    {
+        $this->type = 'multipleSelect';
+        $this->options($options);
+        return $this;
+    }
+
     public function checkbox()
     {
         $this->type = 'checkbox';
+        return $this;
+    }
+
+    public function switch()
+    {
+        $this->type = 'switch';
         return $this;
     }
 

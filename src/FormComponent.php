@@ -7,17 +7,19 @@ use Kdion4891\LaravelLivewireForms\Traits\FollowsRules;
 use Kdion4891\LaravelLivewireForms\Traits\HandlesArrays;
 use Kdion4891\LaravelLivewireForms\Traits\UploadsFiles;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Livewire\WithFileUploads;
 
 class FormComponent extends Component
 {
-    use FollowsRules, UploadsFiles, HandlesArrays;
+    use FollowsRules, UploadsFiles, HandlesArrays, LivewireAlert, WithFileUploads;
 
-    public $model;
+    public $model, $field, $key, $type;
     public $form_data;
     private static $storage_disk;
     private static $storage_path;
 
-    protected $listeners = ['fileUpdate'];
+    protected $listeners = ['fileUpdate', 'confirmed'];
 
     public function mount($model = null)
     {
@@ -31,7 +33,7 @@ class FormComponent extends Component
 
         foreach ($this->fields() as $field) {
             if (!isset($this->form_data[$field->name])) {
-                $array = in_array($field->type, ['checkbox', 'file']);
+                $array = in_array($field->type, ['checkboxes', 'file']);
                 $this->form_data[$field->name] = $field->default ?? ($array ? [] : null);
             }
         }
@@ -69,15 +71,26 @@ class FormComponent extends Component
         $this->validate($this->rules());
 
         $field_names = [];
-        foreach ($this->fields() as $field) $field_names[] = $field->name;
+        foreach ($this->fields() as $field)
+        {
+            $field_names[] = $field->name;
+            if($field->type == 'file')
+            {
+                foreach($this->form_data[$field->name] ?? [] as $key => $value)
+                {
+                    $value->store($this->storage_path.'/'.date('Ymd'));
+                }
+            }
+        }
         $this->form_data = Arr::only($this->form_data, $field_names);
+
 
         $this->success();
     }
 
     public function errorMessage($message)
     {
-        return str_replace('form data.', '', $message);
+        return str_replace(['form data.', 'form_data.'], '', $message);
     }
 
     public function success()
@@ -107,5 +120,33 @@ class FormComponent extends Component
     public function saveAndGoBackResponse()
     {
         return redirect()->route('users.index');
+    }
+
+    public function closeForm()
+    {
+        $this->reset();
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
+
+    public function confirmed()
+    {
+        $this->arrayRemove($this->field, $this->key);
+    }
+
+    public function confirm($field, $key)
+    {
+        $this->field = $field;
+        $this->key = $key;
+        $this->alert('warning', '確認刪除?', [
+            'showConfirmButton' => true,
+            'showCancelButton' => true,
+            'confirmButtonText' => '確認',
+            'cancelButtonText' => '取消',
+            'position' => 'center',
+            'onConfirmed' => 'confirmed',
+            'cancelButtonColor' => '#ee6352',
+            'timer' => null,
+        ]);
     }
 }
