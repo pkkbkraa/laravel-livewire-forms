@@ -1,24 +1,27 @@
 {
-    "name": "kdion4891/laravel-livewire-forms",
+    "name": "pkkbkraa/laravel-livewire-forms",
     "description": "A dynamic, responsive Laravel Livewire form component with realtime validation, file uploads, array fields, and more.",
-    "homepage": "https://github.com/kdion4891/laravel-livewire-forms",
+    "type": "library",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Kevin Dion",
-            "email": "kdion4891@icloud.com",
-            "role": "Developer"
-        }
-    ],
     "autoload": {
         "psr-4": {
-            "Kdion4891\\LaravelLivewireForms\\": "src"
+            "Pkkbkraa\\LaravelLivewireForms\\": "src/"
         }
+    },
+    "authors": [
+        {
+            "name": "Thomas",
+            "email": "pkkbkraa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "php": ">=7.0"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Kdion4891\\LaravelLivewireForms\\Providers\\FormServiceProvider"
+                "Pkkbkraa\\LaravelLivewireForms\\Providers\\FormServiceProvider"
             ]
         }
     }
