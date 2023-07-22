@@ -39,7 +39,7 @@ class UserCreateForm extends FormComponent
 
 您無需在表單元件中使用 `render()` 方法，也不需要擔心元件視圖，因為該套件會自動處理。
 
-**小提示：您可以為您的模型添加 `FillsColumns` trait，以便通過數據庫列名自動填充 `$fillable`。**
+**小提示：您可以為您的 `Model` 添加 `FillsColumns` trait，以便通過數據庫列名自動填充 `$fillable`。**
 
 # 使用表單元件
 
