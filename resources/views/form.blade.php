@@ -33,12 +33,6 @@
                     for (let i = 0; i < event.target.files.length; i++) {
                         form_data.append('files[]', event.target.files[i]);
                     }
-
-                    axios.post('{{ route('laravel-livewire-forms.file-upload') }}', form_data, {
-                        headers: {'Content-Type': 'multipart/form-data'}
-                    }).then(response => {
-                        window.livewire.emit('fileUpdate', response.data.field_name, response.data.uploaded_files);
-                    });
                 })
             });
         });
