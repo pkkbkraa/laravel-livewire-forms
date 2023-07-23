@@ -9,8 +9,6 @@
         data-choices data-choices-removeItem multiple 
         wire:model.lazy="{{ $field->key }}">
 
-        <option value="" disabled selected>{{ $field->placeholder }}</option>
-
         @foreach($field->options as $value => $label)
             <option value="{{ $value }}">{{ $label }}</option>
         @endforeach
