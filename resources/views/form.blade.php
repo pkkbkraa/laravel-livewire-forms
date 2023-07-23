@@ -35,6 +35,7 @@
                     }
                 })
             });
+            Livewire.hook('message.processed', (message, component) => {livewire.emit('file-upload')})
         });
     </script>
 @endpush
