@@ -22,9 +22,20 @@
                 <li class="list-group-item p-2">
                     <div class="row align-items-center">
                         <div class="col">
-                            <a href="{{ $value->temporaryUrl() }}" target="_blank">
-                                <i class="fa fa-fw mr-1"></i>{{ $value->getFilename() }}
-                            </a>
+                            <div class="row gallery-wrapper">
+                                <div class="element-item col-xxl-3 col-xl-4 col-sm-6 project designing development" data-category="designing development">
+                                    <div class="gallery-box card">
+                                        <div class="gallery-container">
+                                            <a class="image-popup" href="{{ $value->temporaryUrl() }}" title="">
+                                                <img class="gallery-img img-fluid mx-auto" src="{{ $value->temporaryUrl() }}" alt="" />
+                                                <div class="gallery-overlay">
+                                                    <h5 class="overlay-caption">{{ $value->getFilename() }}</h5>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-auto">
                             <button class="btn btn-sm btn-danger"
@@ -40,3 +51,20 @@
 
     @include('laravel-livewire-forms::fields.error-help')
 </div>
+
+@push('styles')
+    <!-- glightbox css -->
+    <link href="{{ URL::asset('s/'.CSSJS_Ver.'/assets/libs/glightbox/css/glightbox.min.css') }}" rel="stylesheet" type="text/css" />
+@endpush
+@push('scripts')
+    <!-- glightbox js -->
+    <script src="{{ URL::asset('s/'.CSSJS_Ver.'/assets/libs/glightbox/js/glightbox.min.js') }}"></script>
+    <!-- isotope-layout -->
+    <script src="{{ URL::asset('s/'.CSSJS_Ver.'/assets/libs/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    
+    <script>
+    window.livewire.on('file-update', () => {
+        document.addEventListener("DOMContentLoaded",function(e){document.querySelector(".gallery-wrapper")&&(t=new Isotope(".gallery-wrapper",{itemSelector:".element-item",layoutMode:"fitRows"}));var t,r=document.querySelector(".categories-filter"),r=(r&&r.addEventListener("click",function(e){matchesSelector(e.target,"li a")&&(e=e.target.getAttribute("data-filter"))&&t.arrange({filter:e})}),document.querySelectorAll(".categories-filter"));r&&Array.from(r).forEach(function(e){var t;(t=e).addEventListener("click",function(e){matchesSelector(e.target,"li a")&&(t.querySelector(".active").classList.remove("active"),e.target.classList.add("active"))})})});var lightbox=GLightbox({selector:".image-popup",title:!1});
+    });
+    </script>
+@endpush
