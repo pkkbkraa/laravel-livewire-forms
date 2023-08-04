@@ -19,6 +19,7 @@ class BaseField
     protected $view;
     protected $format;
     protected $range;
+    protected $time;
 
     public function __get($property)
     {
@@ -91,9 +92,15 @@ class BaseField
         return $this;
     }
 
-    public function range($range = false)
+    public function range()
     {
-        $this->range = $range;
+        $this->range = true;
+        return $this;
+    }
+
+    public function time()
+    {
+        $this->time = true;
         return $this;
     }
 
