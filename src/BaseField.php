@@ -77,6 +77,12 @@ class BaseField
         return $this;
     }
 
+    public function datepicker()
+    {
+        $this->type = 'datepicker';
+        return $this;
+    }
+
     protected function options($options)
     {
         $this->options = Arr::isAssoc($options) ? array_flip($options) : array_combine($options, $options);
