@@ -10,9 +10,9 @@
         autocomplete="{{ $field->autocomplete }}"
         placeholder="{{ $field->placeholder }}"
         data-provider="flatpickr"
-        data-date-format="{{ $field->format ?? 'Y-m-d' }}"
-        data-deafult-date="{{ $field->deafult }}"
-        data-range-date="{{ $field->range ?? 'false' }}"
+        data-date-format="{{ isset($field->format) ? $field->format : 'Y-m-d' }}"
+        data-deafult-date="{{ isset($field->deafult) ? $field->deafult : '' }}"
+        {{ isset($field->range) ? 'data-range-date' : '' }}
         wire:model.lazy="{{ $field->key }}">
 
     @include('laravel-livewire-forms::fields.error-help')
