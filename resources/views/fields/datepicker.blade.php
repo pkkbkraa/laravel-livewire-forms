@@ -12,7 +12,7 @@
         data-provider="flatpickr"
         data-date-format="{{ isset($field->format) ? $field->format : 'Y-m-d' }}"
         data-deafult-date="{{ isset($field->deafult) ? $field->deafult : '' }}"
-        {{ isset($field->range) ? 'data-range-date' : '' }}
+        {{ isset($field->range) && $field->range == true ? 'data-range-date' : '' }}
         wire:model.lazy="{{ $field->key }}">
 
     @include('laravel-livewire-forms::fields.error-help')

@@ -17,6 +17,8 @@ class BaseField
     protected $help;
     protected $rules;
     protected $view;
+    protected $format;
+    protected $range;
 
     public function __get($property)
     {
@@ -80,6 +82,18 @@ class BaseField
     public function datepicker()
     {
         $this->type = 'datepicker';
+        return $this;
+    }
+
+    public function format($format)
+    {
+        $this->format = $format;
+        return $this;
+    }
+
+    public function range($range = false)
+    {
+        $this->range = $range;
         return $this;
     }
 
