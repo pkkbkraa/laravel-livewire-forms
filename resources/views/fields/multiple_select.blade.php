@@ -5,7 +5,7 @@
 
     <select
         id="{{ $field->name }}"
-        class="form-control @error($field->key) is-invalid @enderror" 
+        class="form-control" 
         multiple="multiple"
         wire:model.lazy="{{ $field->key }}">
 
