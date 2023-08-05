@@ -13,9 +13,8 @@
             <option value="{{ $value }}">{{ $label }}</option>
         @endforeach
     </select>
-
-    @include('laravel-livewire-forms::fields.error-help')
 </div>
+@include('laravel-livewire-forms::fields.error-help')
 
 @push('styles')
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/multi.js/0.2.4/multi.min.css" />
