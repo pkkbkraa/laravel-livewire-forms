@@ -6,7 +6,7 @@
     <select
         id="{{ $field->name }}"
         class="form-control @error($field->key) is-invalid @enderror" 
-        data-choices data-choices-removeItem multiple 
+        multiple="multiple"
         wire:model.lazy="{{ $field->key }}">
 
         @foreach($field->options as $value => $label)
@@ -17,40 +17,21 @@
     @include('laravel-livewire-forms::fields.error-help')
 </div>
 
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/multi.js/0.2.4/multi.min.css" />
+@endpush
 @push('scripts')
-<script>
-    @php
-    $key = uniqid();
-    @endphp
-    const {{'choices'.$key}} = new Choices(document.getElementById('{{ $field->name }}'));
-    const values = {{'choices'.$key}}.getValue(true);
-    {{'choices'.$key}}.passedElement.element.addEventListener(
-        'addItem',
-        function(event) {
-            values.push(event.detail.value);
-
-            @this.set('{{$field->key}}', values);
-        },
-        false,
-    );
-    {{'choices'.$key}}.passedElement.element.addEventListener(
-        'removeItem',
-        function(event) {
-            remove(values, event.detail.value);
-            @this.set('{{$field->key}}', values);
-        },
-        false,
-    );
-    
-    function remove(arr) {
-        var what, a = arguments, L = a.length, ax;
-        while (L > 1 && arr.length) {
-            what = a[--L];
-            while ((ax= arr.indexOf(what)) !== -1) {
-                arr.splice(ax, 1);
-            }
-        }
-        return arr;
-    }
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/multi.js/0.2.4/multi.min.js"></script>
+    <script>
+        var select_element = document.getElementById("{{ $field->name }}");
+        multi(select_element, {
+            enable_search: true,
+            search_placeholder: '{{__('filter')}}',
+            "non_selected_header": null,
+            "selected_header": null,
+            "limit": -1,
+            "limit_reached": function () {},
+            "hide_empty_groups": false,
+        });
+    </script>
 @endpush
