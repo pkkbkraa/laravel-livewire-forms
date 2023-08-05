@@ -49,7 +49,7 @@ class BaseField
 
     public function multipleSelect($options = [])
     {
-        $this->type = 'multipleSelect';
+        $this->type = 'multiple_select';
         $this->options($options);
         return $this;
     }
