@@ -248,6 +248,11 @@ public function fields()
         Field::make('Fuel Type')->radio(['Gas', 'Diesel', 'Electric'])->default('Diesel'),
         Field::make('Features')->checkboxes(['Stereo', 'Bluetooth', 'Navigation'])->rules('required|min:2'),
         Field::make('Description')->textarea(),
+        Field::make('Colors')->multipleSelect(['Red', 'Green', 'Blue'])->rules('required'),
+        Field::make('狀態')->switch()->placeholder('停用/啟用'),
+        Field::make('日期','date')->datepicker()->rules('required'), //預設
+        Field::make('日期時間','date_time')->datepicker()->time(),
+        Field::make('日期區間','date_range')->datepicker()->range()->format('Md,Y'),
     ];
 }
 ```
@@ -395,6 +400,10 @@ Field::make('accepts_terms')->checkbox()->placeholder('您是否接受我們的�
 用於勾選框的選項陣列。與 `select()` 方法的使用方式相同。
 
 勾選框字段應該有一個可為 null 的 `text` 數據庫列，在模型中應該轉換為 `array`。
+
+### `datepicker()`
+
+將字段設置為 `text` 元素，但以 `datepicker` 呈現。
 
 示例遷移：
 

@@ -12,7 +12,7 @@ Make sure you've [installed Laravel Livewire](https://laravel-livewire.com/docs/
 
 Installing this package via composer:
 
-    composer require etsvthor/laravel-livewire-forms
+    composer require pkkbkraa/laravel-livewire-forms
     
 This package was designed to work well with [Laravel frontend scaffolding](https://laravel.com/docs/7.x/frontend).
 
