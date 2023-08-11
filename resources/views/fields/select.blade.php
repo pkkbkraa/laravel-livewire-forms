@@ -16,8 +16,8 @@
         @endforeach
     </select>
 
-    @include('laravel-livewire-forms::fields.error-help')
 </div>
+@include('laravel-livewire-forms::fields.error-help')
 
 @push('scripts')
 <script>
@@ -29,13 +29,6 @@
         'addItem',
         function(event) {
             @this.set('{{$field->key}}', event.detail.value);
-        },
-        false,
-    );
-    {{ $field->name.$key }}.passedElement.element.addEventListener(
-        'removeItem',
-        function(event) {
-            @this.set('{{$field->key}}', null);
         },
         false,
     );
