@@ -24,13 +24,16 @@
     @php
     $key = uniqid();
     @endphp
-    const {{ $field->name.$key }} = new Choices(document.getElementById('{{ $field->name }}'));
-    {{ $field->name.$key }}.passedElement.element.addEventListener(
-        'addItem',
-        function(event) {
-            @this.set('{{$field->key}}', event.detail.value);
-        },
-        false,
-    );
+    const element = document.getElementById('{{ $field->name }}');
+    if (!element.classList.contains('choices')) {
+        const {{ $field->name.$key }} = new Choices(element);
+        {{ $field->name.$key }}.passedElement.element.addEventListener(
+            'addItem',
+            function(event) {
+                @this.set('{{$field->key}}', event.detail.value);
+            },
+            false
+        );
+    }
 </script>
 @endpush
