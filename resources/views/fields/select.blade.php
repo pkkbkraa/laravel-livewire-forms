@@ -26,8 +26,8 @@
     @endphp
     const {{ $field->name.$key }} = document.getElementById('{{ $field->name }}');
     if (!{{ $field->name.$key }}.classList.contains('choices')) {
-        const {{ $field->name.$key }} = new Choices({{ $field->name.$key }});
-        {{ $field->name.$key }}.passedElement.element.addEventListener(
+        const _{{ $field->name.$key }} = new Choices({{ $field->name.$key }});
+        _{{ $field->name.$key }}.passedElement.element.addEventListener(
             'addItem',
             function(event) {
                 @this.set('{{$field->key}}', event.detail.value);
