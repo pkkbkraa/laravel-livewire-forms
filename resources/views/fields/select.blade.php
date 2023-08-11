@@ -24,9 +24,9 @@
     @php
     $key = uniqid();
     @endphp
-    const {{ $key }} = document.getElementById('{{ $field->name }}');
-    if (!{{ $key }}.classList.contains('choices')) {
-        const {{ $field->name.$key }} = new Choices({{ $key }});
+    const {{ $field->name.$key }} = document.getElementById('{{ $field->name }}');
+    if (!{{ $field->name.$key }}.classList.contains('choices')) {
+        const {{ $field->name.$key }} = new Choices({{ $field->name.$key }});
         {{ $field->name.$key }}.passedElement.element.addEventListener(
             'addItem',
             function(event) {
