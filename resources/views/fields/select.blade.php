@@ -7,7 +7,7 @@
         <select
             id="{{ $field->name }}"
             class="form-select @error($field->key) is-invalid @enderror"
-            data-choices
+            data-choices data-choices-removeItem 
             wire:model.lazy="{{ $field->key }}">
 
             <option value="" disabled selected>{{ $field->placeholder }}</option>
