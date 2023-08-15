@@ -34,5 +34,16 @@
             "limit_reached": function () {},
             "hide_empty_groups": false,
         });
+        Livewire.hook('message.processed', (message, component) => {
+            multi(select_element, {
+                enable_search: true,
+                search_placeholder: '{{__('filter')}}',
+                "non_selected_header": null,
+                "selected_header": null,
+                "limit": -1,
+                "limit_reached": function () {},
+                "hide_empty_groups": false,
+            });
+        })
     </script>
 @endpush
