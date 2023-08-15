@@ -1,20 +1,22 @@
-<div class="form-group mb-2" wire:ignore>
-    <label for="{{ $field->name }}" class="form-label">
-        {{ $field->label }} {!! strpos($field->rules, 'required') !== false ? '<font color="red">*</font>' : '' !!}
-    </label>
+<div>
+    <div class="form-group mb-2" wire:ignore>
+        <label for="{{ $field->name }}" class="form-label">
+            {{ $field->label }} {!! strpos($field->rules, 'required') !== false ? '<font color="red">*</font>' : '' !!}
+        </label>
 
-    <select
-        id="{{ $field->name }}"
-        class="form-control" 
-        multiple="multiple"
-        wire:model.lazy="{{ $field->key }}">
+        <select
+            id="{{ $field->name }}"
+            class="form-control" 
+            multiple="multiple"
+            wire:model.lazy="{{ $field->key }}">
 
-        @foreach($field->options as $value => $label)
-            <option value="{{ $value }}">{{ $label }}</option>
-        @endforeach
-    </select>
+            @foreach($field->options as $value => $label)
+                <option value="{{ $value }}">{{ $label }}</option>
+            @endforeach
+        </select>
+    </div>
+    @include('laravel-livewire-forms::fields.error-help')
 </div>
-@include('laravel-livewire-forms::fields.error-help')
 
 @push('styles')
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/multi.js/0.2.4/multi.min.css" />
