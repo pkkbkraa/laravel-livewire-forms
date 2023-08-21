@@ -78,7 +78,7 @@ class FormComponent extends Component
             {
                 foreach($this->form_data[$field->name] ?? [] as $key => $value)
                 {
-                    $value->store($this->storage_path.'/'.date('Ymd'));
+                    is_string($value) ? $value : $value->store($this->storage_path.'/'.date('Ymd'));
                 }
             }
         }
