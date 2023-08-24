@@ -30,4 +30,9 @@ class DummyComponent extends FormComponent
     {
         return redirect()->route('DummyRoute.index');
     }
+
+    public function hydrate()
+    {
+        $this->emit('choices');
+    }
 }

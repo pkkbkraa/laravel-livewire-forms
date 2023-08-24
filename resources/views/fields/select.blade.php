@@ -10,7 +10,7 @@
             data-choices data-choices-removeItem data-choices-sorting-false 
             wire:model.lazy="{{ $field->key }}">
 
-            <option value="" disabled selected>{{ $field->placeholder }}</option>
+            <option>{{ $field->placeholder }}</option>
 
             @foreach($field->options as $value => $label)
                 <option value="{{ $value }}">{{ $label }}</option>
